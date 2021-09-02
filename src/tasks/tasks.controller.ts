@@ -35,11 +35,14 @@ export class TasksController {
     return await this.tasksService.deleteTaskById(id);
   }
 
-  // @Patch('/:id/status')
-  // updateTaskStatus(
-  //   @Param('id') id: string,
-  //   @Body() updateTaskStatusDto: UpdateTaskStatusDto,
-  // ): Task {
-  //   return this.tasksService.updateTaskStatus(id, updateTaskStatusDto.status);
-  // }
+  @Patch('/:id/status')
+  async updateTaskStatus(
+    @Param('id') id: string,
+    @Body() updateTaskStatusDto: UpdateTaskStatusDto,
+  ): Promise<Task> {
+    return await this.tasksService.updateTaskStatus(
+      id,
+      updateTaskStatusDto.status,
+    );
+  }
 }
